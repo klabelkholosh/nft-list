@@ -17,14 +17,14 @@ export const Logo = ({ height = '100%', fillclr = 'white' }) => {
           x2="87.50000000000001"
           y2="12.499999999999993"
         >
-          <stop id="SvgjsStop1040" stop-color="#7bbde0" offset="0.05"></stop>
-          <stop id="SvgjsStop1041" stop-color="#2a82b2" offset="0.95"></stop>
+          <stop id="SvgjsStop1040" stopColor="#7bbde0" offset="0.05"></stop>
+          <stop id="SvgjsStop1041" stopColor="#2a82b2" offset="0.95"></stop>
         </linearGradient>
       </defs>
       <g id="SvgjsG1038" transform="scale(0.6700440184408616)" opacity="1">
         <g
           id="SvgjsG1042"
-          class="lS5YLpVAY"
+          className="lS5YLpVAY"
           transform="translate(37.24714285714286, -18.62357142857143) scale(1.862357142857143)"
           light-content="false"
           non-strokable="false"
@@ -34,7 +34,7 @@ export const Logo = ({ height = '100%', fillclr = 'white' }) => {
         </g>
         <g
           id="SvgjsG1043"
-          class="text"
+          className="text"
           transform="translate(129.22000122070312,219.38857295445035) scale(1)"
           light-content="false"
           fill={fillclr}

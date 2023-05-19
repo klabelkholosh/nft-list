@@ -1,7 +1,7 @@
 // function to fetch our list of NFTs from an eth address
 export async function getNfts(address) {
-  const web3ApiKey =
-    'cxK7XtmeQjvhEOUWUR5d2XFk3CeWoSwoLtYCum6l3S0EQj9S0EtqObDARBhyEahP';
+  // you'll need to get a free Moralis API key and set it in your .env file..
+  const web3ApiKey = process.env.REACT_APP_MORALIS_API_KEY;
   const options = {
     method: 'GET',
     headers: {
