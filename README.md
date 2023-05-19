@@ -2,8 +2,8 @@
 
 A React-based image gallery, for listing NFTs at an Ethereum address.
 
-# Setup
+## Setup
 
 You'll need a .env file in the root directory, with the following info:
 
-REACT_APP_MORALIS_API_KEY=<free api key from Moralis.io>
+`REACT_APP_MORALIS_API_KEY=<free api key from Moralis.io>`
