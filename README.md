@@ -9,3 +9,7 @@ Demo: https://nft-list-seven.vercel.app/
 You'll need a .env file in the root directory, with the following info:
 
 `REACT_APP_MORALIS_API_KEY=<free api key from Moralis.io>`
+
+## License
+
+MIT
