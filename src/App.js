@@ -13,6 +13,7 @@ const initialState = {
   loading: false,
   theme: 'light',
   nftList: null,
+  showEmptys: false,
 };
 
 // using a reducer to handle state operations
@@ -108,6 +109,11 @@ export default function App() {
     dispatch({ type: 'setVal', name: 'loading', value: loading });
   };
 
+  // show emptys
+  const changeToggle = () => {
+    dispatch({ type: 'setVal', name: 'showEmptys', value: !state.showEmptys });
+  };
+
   return (
     <ThemeProvider value={state.theme}>
       <span className="layout">
@@ -115,8 +121,14 @@ export default function App() {
           changeTheme={changeTheme}
           changeAddress={changeAddress}
           changeLoading={changeLoading}
+          changeToggle={changeToggle}
+          toggleStatus={state.showEmptys}
         />
-        <NftList nftList={state.nftList} loading={state.loading} />
+        <NftList
+          nftList={state.nftList}
+          loading={state.loading}
+          showEmptys={state.showEmptys}
+        />
       </span>
     </ThemeProvider>
   );

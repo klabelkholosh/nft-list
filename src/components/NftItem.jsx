@@ -12,8 +12,11 @@ export default function NftItem({
   attr = null,
   series = null,
   type = 'Failed',
+  showEmpty,
+  idx,
 }) {
   const [hovering, attrs] = useHover();
+  const [display, setDisplay] = React.useState(true);
 
   // determine if we're looking at a video (or hopefully a picture...)
   let mp4type = /\.mp4$/g;
@@ -27,44 +30,47 @@ export default function NftItem({
     image = placeholder;
   }
 
-  return (
-    <div className={hovering ? 'card card-hover' : 'card'} {...attrs}>
-      {doVid === true ? (
-        <video className="nftImg" controls>
-          <source src={image} type="video/mp4" />
-        </video>
-      ) : (
-        <React.Suspense fallback={<Loading />}>
-          <SuspenseImg
-            className="nftImg"
-            src={image}
-            alt={name}
-            onError={({ currentTarget }) => {
-              currentTarget.onError = null; // prevents looping
-              currentTarget.src = placeholder;
-            }}
-          />
-        </React.Suspense>
-      )}
+  return !display && !showEmpty ? null : (
+    <li className="carousel-li" key={idx}>
+      <div className={hovering ? 'card card-hover' : 'card'} {...attrs}>
+        {doVid === true ? (
+          <video className="nftImg" controls>
+            <source src={image} type="video/mp4" />
+          </video>
+        ) : (
+          <React.Suspense fallback={<Loading />}>
+            <SuspenseImg
+              className="nftImg"
+              src={image}
+              alt={name}
+              onError={({ currentTarget }) => {
+                currentTarget.onError = null; // prevents looping
+                currentTarget.src = placeholder;
+                setDisplay(false);
+              }}
+            />
+          </React.Suspense>
+        )}
 
-      <span className="card-text">
-        <h1>{name}</h1>
-        <article>
-          <ReactMarkdown>{desc}</ReactMarkdown>
-        </article>
-        <ul>
-          {attr !== null
-            ? attr.length > 0
-              ? attr.map((el, idx) => (
-                  <li key={idx}>
-                    <b>{el.trait_type}</b> : {el.value}
-                  </li>
-                ))
-              : null
-            : null}
-        </ul>
-        <footer>{series}</footer>
-      </span>
-    </div>
+        <span className="card-text">
+          <h1>{name}</h1>
+          <article>
+            <ReactMarkdown>{desc}</ReactMarkdown>
+          </article>
+          <ul>
+            {attr !== null
+              ? attr.length > 0
+                ? attr.map((el, idx) => (
+                    <li key={idx}>
+                      <b>{el.trait_type}</b> : {el.value}
+                    </li>
+                  ))
+                : null
+              : null}
+          </ul>
+          <footer>{series}</footer>
+        </span>
+      </div>
+    </li>
   );
 }

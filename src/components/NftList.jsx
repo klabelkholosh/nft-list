@@ -3,7 +3,7 @@ import NftItem from './NftItem';
 import Loading from './Loading';
 import ThemeContext from '../contexts/ThemeContext';
 
-export default function NftList({ nftList, loading }) {
+export default function NftList({ nftList, loading, showEmptys }) {
   let theme = React.useContext(ThemeContext);
 
   return (
@@ -32,16 +32,16 @@ export default function NftList({ nftList, loading }) {
               let type = el.image_type;
 
               return (
-                <li className="carousel-li" key={idx}>
-                  <NftItem
-                    name={name}
-                    image={image}
-                    desc={desc}
-                    attr={attr}
-                    series={series}
-                    type={type}
-                  />
-                </li>
+                <NftItem
+                  name={name}
+                  image={image}
+                  desc={desc}
+                  attr={attr}
+                  series={series}
+                  type={type}
+                  showEmpty={showEmptys}
+                  idx={idx}
+                />
               );
             } catch (e) {
               console.log('undefined, skipping:', e);

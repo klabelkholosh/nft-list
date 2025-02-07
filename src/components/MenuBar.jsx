@@ -1,8 +1,15 @@
 import React from 'react';
 import ThemeContext from '../contexts/ThemeContext';
 import AddressInput from './AddressInput';
+import Toggle from './Toggle';
 
-export default function MenuBar({ changeTheme, changeAddress, changeLoading }) {
+export default function MenuBar({
+  changeTheme,
+  changeAddress,
+  changeLoading,
+  changeToggle,
+  toggleStatus,
+}) {
   const theme = React.useContext(ThemeContext);
 
   return (
@@ -14,6 +21,7 @@ export default function MenuBar({ changeTheme, changeAddress, changeLoading }) {
         changeAddress={changeAddress}
         changeLoading={changeLoading}
       />
+      <Toggle changeToggle={changeToggle} toggleStatus={toggleStatus} />
     </span>
   );
 }
